@@ -24,6 +24,10 @@ find_package(Eigen3 REQUIRED)
 ###################################
 
 catkin_package(
+  DEPENDS
+    Eigen3
+    OpenCV
+    PCL
   CATKIN_DEPENDS
   roscpp
   std_msgs
@@ -66,6 +70,7 @@ add_executable(stackDepthPoint src/stackDepthPoint.cpp)
 add_executable(transformMaintenance src/transformMaintenance.cpp)
 add_executable(registerPointCloud src/registerPointCloud.cpp)
 
+
 ## Specify libraries to link a library or executable target against
 target_link_libraries(featureTracking ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 target_link_libraries(visualOdometry ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
@@ -74,3 +79,5 @@ target_link_libraries(processDepthmap ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${
 target_link_libraries(stackDepthPoint ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 target_link_libraries(transformMaintenance ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 target_link_libraries(registerPointCloud ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
+
+

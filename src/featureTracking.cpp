@@ -8,6 +8,7 @@
 
 using namespace std;
 using namespace cv;
+using namespace Eigen;
 
 bool systemInited = false;
 double timeCur, timeLast;
@@ -197,7 +198,8 @@ void imageDataHandler(const sensor_msgs::Image::ConstPtr& imageData)
 
   showCount = (showCount + 1) % (showSkipNum + 1);
   if (showCount == showSkipNum) {
-    Mat imageShowMat(imageShow);
+//    Mat imageShowMat(imageShow);
+    Mat imageShowMat = cv::cvarrToMat(imageShow);
     bridge.image = imageShowMat;
     bridge.encoding = "mono8";
     sensor_msgs::Image::Ptr imageShowPointer = bridge.toImageMsg();

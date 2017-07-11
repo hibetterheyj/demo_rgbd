@@ -1,0 +1,11 @@
+<launch>
+
+  <node pkg="demo_rgbd" type="featureTracking" name="featureTracking" output="screen"/>
+  <node pkg="demo_rgbd" type="visualOdometry" name="visualOdometry" output="screen"/>
+  <node pkg="demo_rgbd" type="bundleAdjust" name="bundleAdjust" output="screen"/>
+  <node pkg="demo_rgbd" type="processDepthmap" name="processDepthmap" output="screen"/>
+  <node pkg="demo_rgbd" type="stackDepthPoint" name="stackDepthPoint" output="screen"/>
+  <node pkg="demo_rgbd" type="transformMaintenance" name="transformMaintenance" output="screen"/>
+  <node pkg="demo_rgbd" type="registerPointCloud" name="registerPointCloud" output="screen"/>
+
+</launch>

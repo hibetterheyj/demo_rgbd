@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include <ros/ros.h>
 
 #include <nav_msgs/Odometry.h>
@@ -585,6 +586,8 @@ void imagePointsHandler(const sensor_msgs::PointCloud2ConstPtr& imagePoints2)
   double tx = transformSum[3] - (cos(ry) * x2 + sin(ry) * z2);
   double ty = transformSum[4] - y2;
   double tz = transformSum[5] - (-sin(ry) * x2 + cos(ry) * z2);
+  std::cout << "Position0 " << tx << " / " << ty << std::endl;
+
 
   transformSum[0] = rx;
   transformSum[1] = ry;
@@ -655,6 +658,7 @@ void imagePointsHandler(const sensor_msgs::PointCloud2ConstPtr& imagePoints2)
 
   geometry_msgs::Quaternion geoQuat = tf::createQuaternionMsgFromRollPitchYaw(rz, -rx, -ry);
 
+
   nav_msgs::Odometry voData;
   voData.header.frame_id = "/camera_init";
   voData.child_frame_id = "/camera";
@@ -669,6 +673,7 @@ void imagePointsHandler(const sensor_msgs::PointCloud2ConstPtr& imagePoints2)
   voData.twist.twist.angular.x = angleSum[0];
   voData.twist.twist.angular.y = angleSum[1];
   voData.twist.twist.angular.z = angleSum[2];
+  std::cout << "Position " << tx << " / " << ty << std::endl;
   voDataPubPointer->publish(voData);
 
   tf::StampedTransform voTrans;
